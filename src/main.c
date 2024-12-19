@@ -3,12 +3,21 @@
 #include "mat_io.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
+int compare(Matrix *a, Matrix *b){
+	if(a->r!=b->r || a->c!=b->c) return -1;
+	for (int i = 0; i < (a->r)*(a->c); i++) {
+        if (fabs(a->data[i][0] - b->data[i][0]) > 0.000001) return 0;
+    }
+	return 1;
+}
 
 int main(int argc, char ** argv) {
 	int res = 0;
 	Matrix * A = readFromFile(argv[1]);
 	Matrix * b = readFromFile(argv[2]);
+	Matrix * expected = readFromFile(argv[3]);
 	Matrix * x;
 
 	if (A == NULL) return -1;
