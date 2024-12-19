@@ -23,6 +23,9 @@ int main(int argc, char ** argv) {
 			res = backsubst(x,A,b);
 
 			printToScreen(x);
+			if(compare(x, expected)==1) 
+				printf("Test zaliczony wynik poprawny\n");
+			else printf("Test niezaliczony wynik niepoprawny!!!!\n");
 		freeMatrix(x);
 		} else {
 						fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
